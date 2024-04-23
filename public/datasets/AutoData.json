@@ -1,0 +1,122 @@
+[
+	{
+		"make": "Москвич",
+		"model": "Модель Б",
+		"releaseYear": "1950",
+		"power": "449 л.с.",
+		"bodyType": "кроссовер",
+		"gearBoxType": "Спортивная",
+		"engine": "1.8 л.",
+		"modification": "гоночный"
+	},
+	{
+		"make": "КамАЗ",
+		"model": "Модель В",
+		"releaseYear": "1989",
+		"power": "120 л.с.",
+		"bodyType": "лимузин",
+		"gearBoxType": "Гидравлическая",
+		"engine": "2.2 л.",
+		"modification": "люкс"
+	},
+	{
+		"make": "ГАЗ",
+		"model": "Модель А",
+		"releaseYear": "1950",
+		"power": "921 л.с.",
+		"bodyType": "купе",
+		"gearBoxType": "Пневматическая",
+		"engine": "1.8 л.",
+		"modification": "пикап"
+	},
+	{
+		"make": "УАЗ",
+		"model": "Модель Б",
+		"releaseYear": "2017",
+		"power": "891 л.с.",
+		"bodyType": "хэтчбек",
+		"gearBoxType": "Электронная",
+		"engine": "2.3 л.",
+		"modification": "электрический"
+	},
+	{
+		"make": "Волга",
+		"model": "Модель Г",
+		"releaseYear": "1997",
+		"power": "732 л.с.",
+		"bodyType": "универсал",
+		"gearBoxType": "Полуавтоматическая",
+		"engine": "2.2 л.",
+		"modification": "кроссовер"
+	},
+	{
+		"make": "Лада",
+		"model": "Модель Д",
+		"releaseYear": "1969",
+		"power": "323 л.с.",
+		"bodyType": "универсал",
+		"gearBoxType": "Спортивная",
+		"engine": "1.6 л.",
+		"modification": "ралли"
+	},
+	{
+		"make": "Лада",
+		"model": "Модель Б",
+		"releaseYear": "2019",
+		"power": "818 л.с.",
+		"bodyType": "универсал",
+		"gearBoxType": "Гидравлическая",
+		"engine": "1.6 л.",
+		"modification": "кабриолет"
+	},
+	{
+		"make": "УАЗ",
+		"model": "Модель К",
+		"releaseYear": "2019",
+		"power": "205 л.с.",
+		"bodyType": "купе",
+		"gearBoxType": "Пневматическая",
+		"engine": "1.4 л.",
+		"modification": "тюнинг"
+	},
+	{
+		"make": "Москвич",
+		"model": "Модель И",
+		"releaseYear": "1978",
+		"power": "241 л.с.",
+		"bodyType": "лимузин",
+		"gearBoxType": "Механическая",
+		"engine": "2.5 л.",
+		"modification": "люкс"
+	},
+	{
+		"make": "ПАЗ",
+		"model": "Модель И",
+		"releaseYear": "2022",
+		"power": "639 л.с.",
+		"bodyType": "лимузин",
+		"gearBoxType": "Экономичная",
+		"engine": "1.7 л.",
+		"modification": "гоночный"
+	},
+	{
+		"make": "Нива Шевроле",
+		"model": "Калина",
+		"releaseYear": "2007",
+		"bodyType": "кроссовер",
+		"power": "123 л. с.",
+		"gearBoxType": "гидравлическая",
+		"engine": "3 л.",
+		"modification": "Базовая"
+	},
+	{
+		"make": "Нива Шевроле",
+		"model": "",
+		"power": "500 л. с.",
+		"releaseYear": "1991",
+		"bodyType": "кабриолет",
+		"gearBoxType": "механическая",
+		"engine": "2 л.",
+		"modification": "Базовая"
+	}
+]

@@ -1,11 +1,11 @@
-"use client";
-
-import { useMainContext } from "@/contexts/MainContext";
-
 import { convertToRussianDate } from "@/lib/utils";
+import { PersonalDataValues } from "@/types/forms/PersonalDataForm";
 
-export default function PersonalDataCard() {
-	const { setStep, personalData, setPersonalStep } = useMainContext();
+export default function PersonalDataCard({
+	personalData,
+}: {
+	personalData: PersonalDataValues;
+}) {
 	return (
 		<section className="bg-white rounded-2xl p-4 flex flex-col gap-2">
 			<div>
@@ -52,14 +52,7 @@ export default function PersonalDataCard() {
 					<p className="kasko-subtext mb-4">{`Стаж от ${driver.beginOfExpDate}`}</p>
 				</div>
 			))}
-			<button
-				type="button"
-				className="button-subtext"
-				onClick={() => {
-					setStep(4);
-					setPersonalStep(1);
-				}}
-			>
+			<button type="button" className="button-subtext">
 				Изменить
 			</button>
 		</section>

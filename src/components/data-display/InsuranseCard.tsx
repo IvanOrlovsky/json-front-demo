@@ -1,9 +1,9 @@
 "use client";
 
-import { useMainContext } from "@/contexts/MainContext";
+import { ParametersFormValues } from "@/types/forms/ParametersForm";
 
-export default function InsuranseCard() {
-	const { setStep, paramsData } = useMainContext();
+
+export default function InsuranseCard({paramsData} : {paramsData: ParametersFormValues}) {
 	return (
 		<section className="bg-white rounded-2xl p-4 flex flex-col gap-2">
 			<h2 className="mb-1">Регион использования ТС</h2>
@@ -15,7 +15,6 @@ export default function InsuranseCard() {
 			<button
 				type="button"
 				className="button-subtext"
-				onClick={() => setStep(2)}
 			>
 				Изменить
 			</button>

@@ -1,10 +1,6 @@
-"use client";
+import { AutoFormValues } from "@/types/forms/AutoForm";
 
-
-import { useMainContext } from "@/contexts/MainContext";
-
-export default function AutoCard() {
-	const { setStep, autoData } = useMainContext();
+export default function AutoCard({ autoData }: { autoData: AutoFormValues }) {
 	return (
 		<section className="bg-white border border-[#DCE1EF] rounded-2xl p-4 flex flex-col">
 			<h2 className="mb-1">{`${autoData.make} ${autoData.model}, ${autoData.releaseYear}`}</h2>
@@ -25,7 +21,9 @@ export default function AutoCard() {
 					</tr>
 					<tr>
 						<td className="kasko-subtext">Тип КПП</td>
-						<td className="kasko-text-xs">{autoData.gearBoxType}</td>
+						<td className="kasko-text-xs">
+							{autoData.gearBoxType}
+						</td>
 					</tr>
 					<tr>
 						<td className="kasko-subtext">Двигатель</td>
@@ -33,15 +31,13 @@ export default function AutoCard() {
 					</tr>
 					<tr>
 						<td className="kasko-subtext">Модификация</td>
-						<td className="kasko-text-xs">{autoData.modification}</td>
+						<td className="kasko-text-xs">
+							{autoData.modification}
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			<button
-				type="button"
-				className="button-subtext"
-				onClick={() => setStep(2.5)}
-			>
+			<button type="button" className="button-subtext">
 				Изменить
 			</button>
 		</section>

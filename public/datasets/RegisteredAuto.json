@@ -1,0 +1,30 @@
+[
+	{
+		"GOSnumber": "У 222 АА 44",
+		"make": "Нива Шевроле",
+		"model": "Калина",
+		"releaseYear": "2007",
+		"bodyType": "кроссовер",
+		"power": "123 л. с.",
+		"gearBoxType": "гидравлическая",
+		"engine": "3 л.",
+		"modification": "Базовая",
+		"TSdocument": "СТС",
+		"PTSnumber": "160982",
+		"VIN": "1FAHP2DW1CG573712"
+	},
+	{
+		"GOSnumber": "У 888 ВВ 11",
+		"make": "Нива Шевроле",
+		"model": "",
+		"power": "500 л. с.",
+		"releaseYear": "1991",
+		"bodyType": "кабриолет",
+		"gearBoxType": "механическая",
+		"engine": "2 л.",
+		"modification": "Базовая",
+		"TSdocument": "СТС",
+		"PTSnumber": "886171",
+		"VIN": "1N6AA0EK1FN703546"
+	}
+]

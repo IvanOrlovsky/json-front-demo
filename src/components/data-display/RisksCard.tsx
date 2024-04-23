@@ -1,11 +1,11 @@
-"use client";
-
-
-import { useMainContext } from "@/contexts/MainContext";
+import { RisksFormValues } from "@/types/forms/RisksForm";
 import CheckIcon from "@mui/icons-material/Check";
 
-export default function RisksCard() {
-	const { setStep, risksData } = useMainContext();
+export default function RisksCard({
+	risksData,
+}: {
+	risksData: RisksFormValues;
+}) {
 	return (
 		<section className="bg-white rounded-2xl p-4 flex flex-col gap-4">
 			{(risksData.crime || risksData.gap) && (
@@ -60,11 +60,7 @@ export default function RisksCard() {
 					)}
 				</>
 			)}
-			<button
-				type="button"
-				className="button-subtext"
-				onClick={() => setStep(3)}
-			>
+			<button type="button" className="button-subtext">
 				Изменить
 			</button>
 		</section>

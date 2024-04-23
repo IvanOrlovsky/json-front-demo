@@ -1,52 +1,22 @@
 import React from "react";
-
-// Интерфейсы для компонентов
-interface HeaderProps {
-	title: string;
-	color: string;
-}
-
-interface ParagraphProps {
-	text: string;
-}
-
-interface ImageProps {
-	src: string;
-	alt: string;
-}
-
-interface LayerProps {
-	layout: "vertical" | "horizontal";
-	components: ComponentData[];
-}
-
-// Тип данных компонента
-type ComponentData =
-	| { type: "Header"; props: HeaderProps }
-	| { type: "Paragraph"; props: ParagraphProps }
-	| { type: "Image"; props: ImageProps }
-	| { type: "Layer"; props: LayerProps };
+import AutoCard from "../data-display/AutoCard";
+import InsuranseCard from "../data-display/InsuranseCard";
+import FormBlock from "../FormBlock";
+import { ComponentData } from "@/types/SDUI/ComponentData";
+import Accordion from "../data-display/Accordion";
+import RisksCard from "../data-display/RisksCard";
+import PersonalDataCard from "../data-display/PersonalDataCard";
 
 // Общий тип JSON данных
 interface JsonData {
 	components: ComponentData[];
 }
 
-// Компонент заголовка
-const Header: React.FC<HeaderProps> = ({ title, color }) => (
-	<h1 style={{ color }}>{title}</h1>
-);
-
-// Компонент параграфа
-const Paragraph: React.FC<ParagraphProps> = ({ text }) => <p>{text}</p>;
-
-// Компонент изображения
-const Image: React.FC<ImageProps> = ({ src, alt }) => (
-	<img src={src} alt={alt} />
-);
-
 // Компонент слоя
-const Layer: React.FC<LayerProps> = ({ layout, components }) => {
+const Layer: React.FC<{
+	layout: "vertical" | "horizontal";
+	components: ComponentData[];
+}> = ({ layout, components }) => {
 	let result;
 
 	try {
@@ -77,16 +47,51 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 	componentData,
 }) => {
 	switch (componentData.type) {
-		case "Header":
-			return <Header {...componentData.props} />;
-		case "Paragraph":
-			return <Paragraph {...componentData.props} />;
-		case "Image":
-			return <Image {...componentData.props} />;
+		case "PersonalDataCard":
+			return (
+				<PersonalDataCard personalData={componentData.personalData} />
+			);
+		case "RisksCard":
+			return <RisksCard risksData={componentData.risksData} />;
+		case "Accordion":
+			return (
+				<Accordion title={componentData.title}>
+					{componentData.children.map((componentData, index) => (
+						<ComponentRenderer
+							key={index}
+							componentData={componentData}
+						/>
+					))}
+				</Accordion>
+			);
+		case "FormBlock":
+			return (
+				<FormBlock
+					title={componentData.title}
+					hasSubmitBtn={componentData.hasSubmitBtn}
+					submitBtnLabel={componentData.submitBtnLabel}
+					forForm={componentData.forForm}
+				>
+					{componentData.children.map((componentData, index) => (
+						<ComponentRenderer
+							key={index}
+							componentData={componentData}
+						/>
+					))}
+				</FormBlock>
+			);
+		case "InsuranseCard":
+			return <InsuranseCard paramsData={componentData.paramsData} />;
+		case "AutoCard":
+			return <AutoCard autoData={componentData.autoData} />;
 		case "Layer":
 			return <Layer {...componentData.props} />;
 		default:
-			return null;
+			return (
+				<div className="text-4xl text-red-200 bg-red-600">
+					Неизвестный тип компонента
+				</div>
+			);
 	}
 };
 
