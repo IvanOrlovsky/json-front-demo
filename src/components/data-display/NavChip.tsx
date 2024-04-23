@@ -7,20 +7,13 @@ import Chip from "@mui/material/Chip";
 export default function NavChip({
 	letterInCircle,
 	label,
-	onClick,
 	disabled,
 	active,
 }: NavChipProps) {
-	const handleClick = () => {
-		if (onClick) {
-			onClick();
-		}
-	};
 
 	return (
 		<Chip
 			disabled={disabled}
-			onClick={handleClick}
 			className={
 				!active
 					? "bg-transparent hover:bg-transparent text-md sm:text-xl"

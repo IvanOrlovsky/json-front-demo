@@ -8,6 +8,54 @@ const examples = [
 	{
 		components: [
 			{
+				type: "Layer",
+				props: {
+					layout: "horizontal",
+					components: [
+						{
+							type: "NavChip",
+							navChipProps: {
+								letterInCircle: "1",
+								label: "Авто",
+								active: false,
+							},
+						},
+						{
+							type: "NavChip",
+							navChipProps: {
+								letterInCircle: "2",
+								label: "Параметры",
+								active: false,
+							},
+						},
+						{
+							type: "NavChip",
+							navChipProps: {
+								letterInCircle: "3",
+								label: "Риски",
+								active: false,
+							},
+						},
+						{
+							type: "NavChip",
+							navChipProps: {
+								letterInCircle: "4",
+								label: "Персональные данные",
+								active: false,
+							},
+						},
+						{
+							type: "NavChip",
+							navChipProps: {
+								letterInCircle: "5",
+								label: "Оплата",
+								active: true,
+							},
+						},
+					],
+				},
+			},
+			{
 				type: "FormBlock",
 				title: "Проверьте данные",
 				hasSubmitBtn: true,
@@ -139,7 +187,7 @@ export default function Home() {
 	};
 
 	return (
-		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10">
+		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 bg-slate-200">
 			<div className="h-1/2 sm:w-1/2 ">
 				<div className="h-1/4 mb-10 flex flex-col">
 					<div className="h-1/4  mb-10 font-semibold text-center text-sm sm:text-4xl font-mono">

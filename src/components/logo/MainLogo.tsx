@@ -1,4 +1,4 @@
-export default function MainLogo(props) {
+export default function MainLogo() {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,6 @@ export default function MainLogo(props) {
 			height="100%"
 			viewBox="0 0 228 28"
 			fill="none"
-			{...props}
 		>
 			<path
 				fill="#21145A"

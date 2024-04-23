@@ -1,4 +1,4 @@
-export default function VisaLogo(props) {
+export default function VisaLogo() {
 	return (
 		<svg
 			id="Layer_1"
@@ -7,7 +7,6 @@ export default function VisaLogo(props) {
 			width="100%"
 			height="100%"
 			viewBox="0 0 1000 324.68"
-			{...props}
 		>
 			<defs></defs>
 			<path

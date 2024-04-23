@@ -6,6 +6,7 @@ import { ComponentData } from "@/types/SDUI/ComponentData";
 import Accordion from "../data-display/Accordion";
 import RisksCard from "../data-display/RisksCard";
 import PersonalDataCard from "../data-display/PersonalDataCard";
+import NavChip from "../data-display/NavChip";
 
 // Общий тип JSON данных
 interface JsonData {
@@ -47,6 +48,8 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 	componentData,
 }) => {
 	switch (componentData.type) {
+		case "NavChip":
+			return <NavChip {...componentData.navChipProps} />;
 		case "PersonalDataCard":
 			return (
 				<PersonalDataCard personalData={componentData.personalData} />
