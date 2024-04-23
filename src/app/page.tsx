@@ -193,6 +193,7 @@ export default function Home() {
 					<div className="h-1/4  mb-10 font-semibold text-center text-sm sm:text-4xl font-mono">
 						Входной JSON
 					</div>
+					{error && <div style={{ color: "red" }}>{error}</div>}
 					<h2 className="text-sm sm:text-2xl font-mono mb-2">
 						Заготовленные экраны:
 					</h2>
@@ -204,15 +205,16 @@ export default function Home() {
 									document.getElementById(
 										"jsonEditor"
 									) as HTMLTextAreaElement
-								).setRangeText(
-									JSON.stringify(examples[0], null, "\t")
+								).value = JSON.stringify(
+									examples[0],
+									null,
+									"\t"
 								);
 							}}
 						>
 							Экран оплаты
 						</Button>
 					</div>
-					{error && <div style={{ color: "red" }}>{error}</div>}
 				</div>
 				<textarea
 					id="jsonEditor"
