@@ -36,6 +36,8 @@ const Layer: React.FC<{
 			style={{
 				display: "flex",
 				flexDirection: layout === "vertical" ? "column" : "row",
+				gap: "4px",
+				margin: "4px",
 			}}
 		>
 			{result}
