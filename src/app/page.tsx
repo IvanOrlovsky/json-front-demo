@@ -204,7 +204,9 @@ export default function Home() {
 									document.getElementById(
 										"jsonEditor"
 									) as HTMLTextAreaElement
-								).setRangeText(JSON.stringify(examples[0]));
+								).setRangeText(
+									JSON.stringify(examples[0], null, "\t")
+								);
 							}}
 						>
 							Экран оплаты
