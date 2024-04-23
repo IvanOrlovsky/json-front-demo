@@ -1,0 +1,21 @@
+export type AutoFormValues = {
+	isCarRegistered: boolean;
+	GOSnumber: string;
+	make: string;
+	model: string;
+	releaseYear: string;
+	power: string;
+	bodyType: string;
+	gearBoxType: string;
+	engine: string;
+	modification: string;
+	todayCost: string;
+	mileage: string;
+	minDriversAge: string;
+	minDriversExp: string;
+	hasActiveKasko: boolean;
+	isCarInCredit: boolean;
+	TSdocument: string;
+	PTSnumber: string;
+	VIN: string;
+};
