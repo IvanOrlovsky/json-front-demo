@@ -28,7 +28,7 @@ export default function PaymentCard({ onSubmit }: { onSubmit: () => void }) {
 				<div className="bg-kasko-bg flex flex-col rounded-xl gap-1 p-2">
 					<label className="text-xs font-roboto">Номер карты</label>
 					<div className="flex flex-row gap-2">
-						<VisaLogo className="w-16 self-center" />
+						<VisaLogo/>
 						<input
 							id="cardNumber"
 							className="grow bg-kasko-bg border-2 rounded-xl border-gray-400 p-2 text-base font-roboto font-semibold	"
