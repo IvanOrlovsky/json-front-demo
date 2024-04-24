@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AutoCard from "../data-display/AutoCard";
 import InsuranseCard from "../data-display/InsuranseCard";
 import FormBlock from "../FormBlock";
@@ -106,14 +106,16 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 
 // Компонент страницы
 const Page: React.FC<{ jsonData: JsonData }> = ({ jsonData }) => {
-	let result;
 	const { data, updateData } = useMainContext();
+	updateData(jsonData);
+
+	const [page, setPage] = useState(<></>);
 
 	useEffect(() => {
 		try {
-			result = (
+			setPage(
 				<div>
-					{jsonData.components.map((componentData, index) => (
+					{data.components.map((componentData, index) => (
 						<ComponentRenderer
 							key={index}
 							componentData={componentData}
@@ -122,7 +124,7 @@ const Page: React.FC<{ jsonData: JsonData }> = ({ jsonData }) => {
 				</div>
 			);
 		} catch (error: any) {
-			result = (
+			setPage(
 				<div className="text-4xl text-red-200 bg-red-600">
 					{error?.message as string}
 				</div>
@@ -130,8 +132,7 @@ const Page: React.FC<{ jsonData: JsonData }> = ({ jsonData }) => {
 		}
 	}, [data]);
 
-	updateData(jsonData);
-	return result;
+	return page;
 };
 
 export default Page;
