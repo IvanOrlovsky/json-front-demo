@@ -4,6 +4,8 @@ import { useState } from "react";
 import Page from "@/components/SDUI/Page";
 import { Button } from "@/components/ui/button";
 
+import MainContextProvider from "@/contexts/MainContext";
+
 const examples = [
 	{
 		components: [
@@ -68,20 +70,7 @@ const examples = [
 						children: [
 							{
 								type: "AutoCard",
-								autoData: {
-									GOSnumber: "У 222 АА 44",
-									make: "Нива Шевроле",
-									model: "Калина",
-									releaseYear: "2007",
-									bodyType: "кроссовер",
-									power: "123 л. с.",
-									gearBoxType: "гидравлическая",
-									engine: "3 л.",
-									modification: "Базовая",
-									TSdocument: "СТС",
-									PTSnumber: "160982",
-									VIN: "1FAHP2DW1CG573712",
-								},
+								GOSnumber: "У 222 АА 44",
 							},
 						],
 					},
@@ -228,7 +217,9 @@ export default function Home() {
 					Сгенерированный экран
 				</div>
 				<div className="p-10 w-full h-full border-4 border-black text-3xl font-mono rounded-lg overflow-scroll">
-					<Page jsonData={JSON.parse(jsonData)}></Page>
+					<MainContextProvider>
+						<Page jsonData={JSON.parse(jsonData)}></Page>
+					</MainContextProvider>
 				</div>
 			</div>
 		</main>

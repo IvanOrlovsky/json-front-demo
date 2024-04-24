@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import AutoCard from "../data-display/AutoCard";
 import InsuranseCard from "../data-display/InsuranseCard";
 import FormBlock from "../FormBlock";
@@ -7,6 +9,8 @@ import Accordion from "../data-display/Accordion";
 import RisksCard from "../data-display/RisksCard";
 import PersonalDataCard from "../data-display/PersonalDataCard";
 import NavChip from "../data-display/NavChip";
+
+import { useMainContext } from "@/contexts/MainContext";
 
 // Общий тип JSON данных
 interface JsonData {
@@ -88,7 +92,7 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 		case "InsuranseCard":
 			return <InsuranseCard paramsData={componentData.paramsData} />;
 		case "AutoCard":
-			return <AutoCard autoData={componentData.autoData} />;
+			return <AutoCard GOSnumber={componentData.GOSnumber} />;
 		case "Layer":
 			return <Layer {...componentData.props} />;
 		default:
@@ -103,25 +107,30 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 // Компонент страницы
 const Page: React.FC<{ jsonData: JsonData }> = ({ jsonData }) => {
 	let result;
-	try {
-		result = (
-			<div>
-				{jsonData.components.map((componentData, index) => (
-					<ComponentRenderer
-						key={index}
-						componentData={componentData}
-					/>
-				))}
-			</div>
-		);
-	} catch (error: any) {
-		return (
-			<div className="text-4xl text-red-200 bg-red-600">
-				{error?.message as string}
-			</div>
-		);
-	}
+	const { data, updateData } = useMainContext();
 
+	useEffect(() => {
+		try {
+			result = (
+				<div>
+					{jsonData.components.map((componentData, index) => (
+						<ComponentRenderer
+							key={index}
+							componentData={componentData}
+						/>
+					))}
+				</div>
+			);
+		} catch (error: any) {
+			result = (
+				<div className="text-4xl text-red-200 bg-red-600">
+					{error?.message as string}
+				</div>
+			);
+		}
+	}, [data]);
+
+	updateData(jsonData);
 	return result;
 };
 

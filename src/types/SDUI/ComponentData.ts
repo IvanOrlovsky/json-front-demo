@@ -25,7 +25,7 @@ export type ComponentData =
 			title: string;
 	  }
 	| { type: "InsuranseCard"; paramsData: ParametersFormValues }
-	| { type: "AutoCard"; autoData: AutoFormValues }
+	| { type: "AutoCard"; GOSnumber: string }
 	| {
 			type: "Layer";
 			props: {
