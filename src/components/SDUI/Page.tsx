@@ -57,9 +57,7 @@ const ComponentRenderer: React.FC<{ componentData: ComponentData }> = ({
 		case "NavChip":
 			return <NavChip {...componentData.navChipProps} />;
 		case "PersonalDataCard":
-			return (
-				<PersonalDataCard personalData={componentData.personalData} />
-			);
+			return <PersonalDataCard phoneNumber={componentData.phoneNumber} />;
 		case "RisksCard":
 			return <RisksCard risksData={componentData.risksData} />;
 		case "Accordion":

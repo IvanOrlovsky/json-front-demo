@@ -117,40 +117,7 @@ const examples = [
 						children: [
 							{
 								type: "PersonalDataCard",
-								personalData: {
-									smsCode: "1231",
-									isPulseClient: false,
-									phoneNumber: "89158952780",
-									surname: "Иванов",
-									name: "Иван",
-									patronymic: "Иванович",
-									birthday: new Date().toDateString(),
-									passportNumber: "2917 123123",
-									passportGivenBy:
-										"ОМВД по Калужской Области",
-									passportGivenDate:
-										new Date().toDateString(),
-									registrationLocation: "Обнинск",
-									email: "example@mail.ru",
-									isInsurantOwner: false,
-									ownerFullName: "Иванов Иван Иванович",
-									ownerBirthday: new Date().toDateString(),
-									ownerPassportNumber: "2917 123123",
-									ownerPassportGivenBy:
-										"ОМВД по Калужской Области",
-									ownerPassportGivenDate:
-										new Date().toDateString(),
-									ownerRegistrationLocation: "Обнинск",
-									isInsurantDriver: false,
-									drivers: [
-										{
-											fullName: "Иванов Иван Иванович",
-											birthday: new Date().toDateString(),
-											driverLicenceNumber: "23123131312",
-											beginOfExpDate: "2021",
-										},
-									],
-								},
+								phoneNumber: "89158952780",
 							},
 						],
 					},

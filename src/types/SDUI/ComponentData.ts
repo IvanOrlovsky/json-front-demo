@@ -6,7 +6,7 @@ import { RisksFormValues } from "../forms/RisksForm";
 
 export type ComponentData =
 	| { type: "NavChip"; navChipProps: NavChipProps }
-	| { type: "PersonalDataCard"; personalData: PersonalDataValues }
+	| { type: "PersonalDataCard"; phoneNumber: string }
 	| {
 			type: "RisksCard";
 			risksData: RisksFormValues;
