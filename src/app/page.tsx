@@ -187,7 +187,7 @@ export default function Home() {
 	};
 
 	return (
-		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 bg-slate-200">
+		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 ">
 			<div className="h-1/2 sm:w-1/2 ">
 				<div className="h-1/4 mb-10 flex flex-col">
 					<div className="h-1/4  mb-10 font-semibold text-center text-sm sm:text-4xl font-mono">

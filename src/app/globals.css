@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
 
+:root {
+	@apply bg-slate-200;
+}
+
 @layer base {
 	h1 {
 		@apply font-roboto w-fit font-semibold text-2xl sm:text-4xl mx-[16px];
