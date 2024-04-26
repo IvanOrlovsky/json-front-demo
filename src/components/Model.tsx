@@ -14,7 +14,7 @@ export default function Model() {
 			placeholder="Модель"
 			className="p-4 border-1 rounded-md "
 			onChange={(e) => {
-				updateData((prev) => ({ ...prev, make: e.target.value }));
+				updateData((prev) => ({ ...prev, model: e.target.value }));
 			}}
 			disabled={data.make === undefined || data.make === ""}
 			value={data.model}
