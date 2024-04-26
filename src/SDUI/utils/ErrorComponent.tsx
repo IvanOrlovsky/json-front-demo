@@ -7,7 +7,7 @@ export default function ErrorComponent({
 }) {
 	return (
 		<div>
-			<p>Ошибка при загрузке компонента "{componentName}"</p>
+			<p>Ошибка при загрузке компонента {componentName}</p>
 			<p>{errorMessage}</p>
 		</div>
 	);
