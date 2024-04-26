@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { JSONDescription } from "./types/JSONDescription";
-import { renderComponent } from "./utils/renderComponent";
 import { useRenderComponent } from "./hooks/useRenderComponent";
 
 export default function Renderer({
