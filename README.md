@@ -1,119 +1,36 @@
-# КАСКО ВЕБ
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Технологии
+## Getting Started
 
--   Язык TypeScript
--   JS/React Фреймворк Next.js
--   CSS Фреймворк TailWind
+First, run the development server:
 
-## Библиотеки
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
--   [Material UI](https://mui.com/)
--   [Shadcn UI](https://ui.shadcn.com/)
--   [FlowBite](https://flowbite.com/)
--   [React-Hook-Form](https://react-hook-form.com/)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Инструкция по запуску
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. **Перед началом:**
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-    Вам необходимо удостовериться, что на вашем компьютере установлен Node.js и npm. Если их нет, вы можете загрузить их с [официального сайта Node.js](https://nodejs.org/).
+## Learn More
 
-2. **Клонирование репозитория:**
+To learn more about Next.js, take a look at the following resources:
 
-    ```bash
-    git clone https://github.com/IvanOrlovsky/kasko-web.git
-    ```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-3. **Установка зависимостей:**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-    ```bash
-    npm install
-    ```
+## Deploy on Vercel
 
-4. **Запуск проекта:**
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-    ```bash
-    npm run dev
-    ```
-
-    После выполнения этой команды, ваш проект будет доступен по адресу http://localhost:3000 в вашем браузере.
-
-## **Реализация и использование**
-
-### Реализованы:
-
--   **Блоки**
-    -   Начальная страница с блоком ввода информации об Авто
-        -   Реализован сценарий, когда Авто не зарегистрировано
-        -   Реализован сценарий, когда Информация по Авто найдена вся
-        -   Реализован сценарий, когда Информация по Авто найдена не вся
-    -   Блок параметров страховки
-        -   Реализован полностью
-    -   Блок рисков
-        -   Реализован полностью
-    -   Блок персональных данных
-        -   Реализован сценарий, когда страхователь - клиент СК "Пульс"
-        -   Реализован сценарий, когда страхователь - владелец
-        -   Реализован сценарий, когда страхователь - водитель
-    -   Блок оплаты
-        -   Реализован польностью
-    -   Страница готовности оформления полиса
-        -   Реализована польностью
--   **Функционал**
-    -   Обработка форм
-        -   Все присутствующие поля на блоках обрабатываются библиотекой [React-Hook-Form](https://react-hook-form.com/)
-    -   Контект
-        -   Все заполненные данные сохраняются в контексте страницы, что позволяет возвращаться к предыдущим этапам, чтобы поправить введенные поля
--   **Компоненты**
-    -   NavChip(Фишка) (основан на [Material UI](https://mui.com/))
-        -   Компонент для указания на каком этапе оформления находится пользователь
-    -   AutoCard
-        -   Компонент карточки найденного авто с данными и возможностью их изменить
-    -   InsuranseCard
-        -   Компонент карточки параметров страховки с данными и возможностью их изменить
-    -   PersonalDataCard
-        -   Компонент карточки персональный данных с данными и возможностью их изменить
-    -   RisksCard
-        -   Компонент карточки рисков с данными и возможностью их изменить
-    -   Accordion
-        -   Компонент аккордион
-    -   AutoComplete (основан на [Material UI](https://mui.com/))
-        -   Компонент ввода с выпадающим меню вариантов. При вводе значений в текстовое поле меню вариантов фильтрует результаты и выделяет жирным совпаший текст
-    -   DateInput (основан на [Material UI](https://mui.com/))
-        -   Ввод даты с выпадающим каледарем
-    -   RangeInput (основан на [Material UI](https://mui.com/))
-        -   CurrencyRangeInput
-            -   Компонент ввода валютных значений со слайдером. Обязательно должен иметь минимальное и максимальное значения, может иметь отметки, имеет валидацию под денежный формат, можно вводить значения как вручную, так и через слайдер.
-        -   DateRangeInput
-            -   Компонент ввода дат со слайдером. Обязательно должен иметь марки, запрещен ввод вручную, данные можно вводить только со слайдера.
-        -   RangeInput
-            -   Компонент ввода чисел со слайдером. Отличается от CurrencyRangeInput отсутствием валидации.
-    -   SimpleInput (основан на [FlowBite](https://flowbite.com/))
-        -   Стилизованный тег input
-    -   SimpleSelect (основан на [Material UI](https://mui.com/))
-        -   Стилизованный Select
-    -   TwoOptionsSwitch (основан на [Shadcn UI](https://ui.shadcn.com/))
-        -   Компонент выбора из двух элементов в виде вкладок(или свитча)
-    -   FormBlock
-        -   Компонент-контейнер для секции из формы
-    -   Header
-        -   Компонент заголовка сайта, всегда виден, при прокрутке страницы он остается наверху экрана. Включает в себя логотип и две кнопки
-    -   Footer
-        -   Компонент футера сайта, всегда виден, при прокрутке страницы он остается внизу экрана. Включает в себя текущую стоимость подписки, становится виден после ввода всей информации об Авто
-    -   InfoHint
-        -   Компонент кнопки-подсказки с иконкой. При наведении вылезает текстовая подсказка.
-    -   CheckBox (основан на [Material UI](https://mui.com/))
-        -   Компонент чекбокса с надписью
-    -   BigCheck
-        -   Компонент чекбокса-блока с заголовком и текстом.
-    -   CheckSwitch (основан на [Material UI](https://mui.com/))
-        -   Компонент чекбокса-переключателя с текстом
-    -   SmsCode
-        -   Компонент ввода кода из СМС
-    -   PaymentCard
-        -   Компонент оплаты
-
-### Использование:
-
-Чтобы перейти к блоку параметров необходимо прожать галочку "Авто еще не зарегистрировано" или же ввести любой госномер и заполнить все поля, также можно ввести госномер "У 888 ВВ 11" и дополнить недостающие и обязательные поля, а также можно ввести госномер "У 222 АА 44" и дополнить только обязательные поля. После этого никаких разветвлений не происходит, от этапа к этапу необходимо просто переходить через кнопку, разве что меняя разные вводы. На этапе ввода персональных данных код от СМС можно вводить любой, данные заполнятся заготовленным человеком.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

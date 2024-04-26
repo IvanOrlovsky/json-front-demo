@@ -1,10 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Page from "@/components/SDUI/Page";
-import { Button } from "@/components/ui/button";
-
-import MainContextProvider from "@/contexts/MainContext";
+import Screen from "@/SDUI/Screen";
 
 const examples = [
 	{
@@ -150,27 +147,6 @@ export default function Home() {
 						Входной JSON
 					</div>
 					{error && <div style={{ color: "red" }}>{error}</div>}
-					<h2 className="text-sm sm:text-2xl font-mono mb-2">
-						Заготовленные экраны:
-					</h2>
-					<div className="flex flex-row flex-wrap">
-						<Button
-							onClick={() => {
-								setJsonData(JSON.stringify(examples[0]));
-								(
-									document.getElementById(
-										"jsonEditor"
-									) as HTMLTextAreaElement
-								).value = JSON.stringify(
-									examples[0],
-									null,
-									"\t"
-								);
-							}}
-						>
-							Экран оплаты
-						</Button>
-					</div>
 				</div>
 				<textarea
 					id="jsonEditor"
@@ -184,9 +160,7 @@ export default function Home() {
 					Сгенерированный экран
 				</div>
 				<div className="p-10 w-full h-full border-4 border-black text-3xl font-mono rounded-lg overflow-scroll">
-					<MainContextProvider>
-						<Page jsonData={JSON.parse(jsonData)}></Page>
-					</MainContextProvider>
+					<Screen description={JSON.parse(jsonData)}></Screen>
 				</div>
 			</div>
 		</main>
