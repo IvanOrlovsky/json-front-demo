@@ -3,20 +3,21 @@
 import { useDataObject } from "@/SDUI/dataObjectContext/dataObjectContext";
 import { useEffect } from "react";
 
-export default function Make() {
+export default function Model() {
 	const { data, updateData } = useDataObject();
 	useEffect(() => {
-		updateData((prev) => ({ ...prev, make: "", makeID: "" }));
+		updateData((prev) => ({ ...prev, model: "", modelID: "" }));
 	}, []);
 
 	return (
 		<input
-			placeholder="Марка"
+			placeholder="Модель"
 			className="p-4 border-1 rounded-md "
 			onChange={(e) => {
 				updateData((prev) => ({ ...prev, make: e.target.value }));
 			}}
-			value={data.make}
+			disabled={data.make === undefined || data.make === ""}
+			value={data.model}
 		></input>
 	);
 }

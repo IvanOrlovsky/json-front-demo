@@ -1,4 +1,3 @@
-import DataObjectProvider from "./dataObjectContext/dataObjectContext";
 import Renderer from "./Renderer";
 import { JSONDescription } from "./types/JSONDescription";
 
@@ -9,9 +8,7 @@ export default function Screen({
 }) {
 	return (
 		<main>
-			<DataObjectProvider>
-				<Renderer description={description} />
-			</DataObjectProvider>
+			<Renderer description={description} />
 		</main>
 	);
 }
