@@ -1,12 +1,25 @@
 "use client";
 
-import { useDataObject } from "@/SDUI/dataObjectContext/dataObjectContext";
+import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
 import { useEffect } from "react";
 
 export default function Model() {
 	const { data, updateData } = useDataObject();
 	useEffect(() => {
-		updateData((prev) => ({ ...prev, model: "", modelID: "" }));
+		updateData((prev) => ({
+			...prev,
+			model: "",
+			modelID: "",
+		}));
+
+		const cleanup = () => {
+			updateData((prev) => {
+				const { model, modelID, ...rest } = prev;
+				return rest;
+			});
+		};
+
+		return cleanup;
 	}, []);
 
 	return (

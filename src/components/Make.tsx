@@ -1,22 +1,24 @@
 "use client";
 
-import { useDataObject } from "@/SDUI/dataObjectContext/dataObjectContext";
-import { useEffect } from "react";
+import { useDataObjectUpdatetion } from "@/SDUI/hooks/useDataObjectUpdatetion";
+import { useComponentContext } from "@/SDUI/contexts/componentContext";
+import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
 
 export default function Make() {
-	const { data, updateData } = useDataObject();
-	useEffect(() => {
-		updateData((prev) => ({ ...prev, make: "", makeID: "" }));
-	}, []);
+	const { info, updateInfo } = useComponentContext();
+	const { updateData } = useDataObject();
+
+	useDataObjectUpdatetion(info.id, { make: info.value });
 
 	return (
 		<input
 			placeholder="Марка"
 			className="p-4 border-1 rounded-md "
 			onChange={(e) => {
-				updateData((prev) => ({ ...prev, make: e.target.value }));
+				updateInfo({ id: info.id, value: e.target.value });
 			}}
-			value={data.make}
+			id={info.id}
+			name={info.id}
 		></input>
 	);
 }

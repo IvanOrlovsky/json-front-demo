@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 import Screen from "@/SDUI/Screen";
 
-import { useDataObject } from "@/SDUI/dataObjectContext/dataObjectContext";
+import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
 
 export default function Home() {
 	const [jsonData, setJsonData] = useState(
-		JSON.stringify({
-			components: [{ componentName: "Make" }, { componentName: "Model" }],
-		})
+		JSON.stringify({ components: [{ id: "1", name: "Make" }] })
 	);
 	const [error, setError] = useState("");
 
