@@ -37,6 +37,7 @@ export default function Renderer({
 		if (!isEqual(prevComponentsRef.current, components)) {
 			renderAllComponents();
 			console.log("renderAllComponents from Renderer");
+			prevComponentsRef.current = components;
 		}
 	}, [components]);
 
