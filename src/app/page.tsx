@@ -30,10 +30,10 @@ export default function Home() {
 	};
 
 	return (
-		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 ">
-			<div className="h-1/2 sm:w-1/2 ">
-				<div className="h-1/4 mb-10 flex flex-col">
-					<div className="h-1/4  mb-10 font-semibold text-center text-sm sm:text-4xl font-mono">
+		<main className="flex flex-col sm:flex-row gap-4 p-10 ">
+			<div className="sm:w-1/2 w-full">
+				<div className=" flex flex-col">
+					<div className="mb-2 font-semibold text-center text-sm sm:text-4xl font-mono">
 						Входной JSON
 					</div>
 					{error && <div style={{ color: "red" }}>{error}</div>}
@@ -44,8 +44,8 @@ export default function Home() {
 					onChange={handleJsonChange}
 					className="p-10 w-full h-3/4 border-4 border-black text-xl font-mono rounded-lg"
 				/>
-				<div className="h-1/4 mt-2 flex flex-col gap-4">
-					<div className="h-1/4  mb-2 font-semibold text-center text-sm sm:text-4xl font-mono">
+				<div className="mt-2 flex flex-col gap-4">
+					<div className="mb-2 font-semibold text-center text-sm sm:text-4xl font-mono">
 						Текущий Дата-Объект
 					</div>
 				</div>
@@ -63,11 +63,11 @@ export default function Home() {
 					className="p-10 w-full h-3/4 border-4 border-black text-xl font-mono rounded-lg"
 				></textarea>
 			</div>
-			<div className="h-1/2 sm:w-1/2">
-				<div className="h-1/4  mb-10 font-semibold	 text-center text-sm sm:text-4xl font-mono">
+			<div className="sm:w-1/2 w-full">
+				<div className="mb-2 font-semibold	text-center text-sm sm:text-4xl font-mono">
 					Сгенерированный экран
 				</div>
-				<div className="p-10 w-full h-full border-4 border-black text-3xl font-mono rounded-lg overflow-scroll">
+				<div className="p-10  border-4 border-black text-3xl font-mono rounded-lg overflow-scroll">
 					<Screen description={JSON.parse(jsonData)}></Screen>
 				</div>
 			</div>
