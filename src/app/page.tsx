@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Screen from "@/SDUI/Screen";
 
 import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
+import DataObjectProvider from "@/SDUI/contexts/dataObjectContext";
 
 export default function Home() {
 	const [jsonData, setJsonData] = useState(

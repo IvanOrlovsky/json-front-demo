@@ -5,9 +5,6 @@ export const importComponent = async (componentName: string, id: string) => {
 		const componentModule = await import(`@/components/${componentName}`);
 
 		if (componentModule.default) {
-			console.log(
-				typeof React.createElement(componentModule.default, { id: id })
-			);
 			return React.createElement(componentModule.default, { id: id });
 		} else {
 			throw new Error(

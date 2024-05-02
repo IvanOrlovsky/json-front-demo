@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 export function useRenderComponent(componentName: string, id: string) {
 	const [component, setComponent] = useState<any>();
 
+	
+
 	useEffect(() => {
 		const getComponent = async () => {
 			try {

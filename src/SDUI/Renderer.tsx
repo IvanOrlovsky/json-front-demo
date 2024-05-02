@@ -11,9 +11,9 @@ export default function Renderer({
 	description: JSONDescription;
 }) {
 	const { components } = description;
-	const [renderedComponents, setRenderedComponents] = useState<
-		Component[] | React.ReactNode
-	>([]);
+	const [renderedComponents, setRenderedComponents] = useState<Component[]>(
+		[]
+	);
 
 	const prevComponentsRef = useRef(components);
 
@@ -42,9 +42,9 @@ export default function Renderer({
 
 	return (
 		<div>
-			{(renderedComponents as Component[]).map((component, index) => (
+			{renderedComponents.map((component, index) => (
 				<RenderedComponent
-					key={index}
+					key={component.id}
 					name={component.name}
 					id={component.id}
 				/>
