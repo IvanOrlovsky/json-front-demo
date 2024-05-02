@@ -12,7 +12,7 @@ export default function DataObjectProvider({
 }: {
 	children: React.ReactNode;
 }) {
-	const [data, updateData] = useState<Record<string, any>>({ smt: "test" });
+	const [data, updateData] = useState<Record<string, any>>({});
 	return (
 		<DataObject.Provider value={{ data, updateData }}>
 			{children}

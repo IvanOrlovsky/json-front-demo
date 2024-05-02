@@ -5,7 +5,7 @@ export function useDataObjectUpdatetion(
 	id: string,
 	value: Record<string, any> | string
 ) {
-	const { updateData } = useDataObject();
+	const { data, updateData } = useDataObject();
 
 	useEffect(() => {
 		updateData((prev) => ({
@@ -30,5 +30,5 @@ export function useDataObjectUpdatetion(
 		}));
 	};
 
-	return { handleOnChange };
+	return { data, handleOnChange };
 }

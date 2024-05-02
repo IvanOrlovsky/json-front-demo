@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Screen from "@/SDUI/Screen";
-
 import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
-import DataObjectProvider from "@/SDUI/contexts/dataObjectContext";
 
 export default function Home() {
 	const [jsonData, setJsonData] = useState(
@@ -25,36 +23,6 @@ export default function Home() {
 		}
 	};
 
-	const handleUpdateData = () => {
-		if (data.make !== undefined) {
-			updateData((prev) => ({
-				...prev,
-				make: "УАЗ",
-				makeID: "1",
-			}));
-		}
-		if (data.model !== undefined) {
-			updateData((prev) => ({
-				...prev,
-				model: "Патриот",
-				modelID: "2",
-			}));
-			console.log(Object.keys(data));
-		}
-	};
-
-	useEffect(() => {
-		console.log(data); // Выводим обновленные данные
-	}, [data]);
-
-	function parseJSON(jsonData: string) {
-		try {
-			return JSON.parse(jsonData);
-		} catch (error) {
-			return {};
-		}
-	}
-
 	return (
 		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 ">
 			<div className="h-1/2 sm:w-1/2 ">
@@ -74,16 +42,18 @@ export default function Home() {
 					<div className="h-1/4  mb-2 font-semibold text-center text-sm sm:text-4xl font-mono">
 						Текущий Дата-Объект
 					</div>
-					<button
-						onClick={() => handleUpdateData()}
-						className="p-2 rounded-sm text-md bg-blue-400 font-semibold hover:bg-blue-700"
-					>
-						Заполнить дата-объект данными
-					</button>
 				</div>
 				<textarea
 					value={JSON.stringify(data, null, 2)}
-					disabled
+					onChange={(e) => {
+						try {
+							const res = JSON.parse(e.target.value);
+							updateData(() => res);
+							setError("");
+						} catch (e) {
+							setError("Неверный формат json для Дата-Объекта");
+						}
+					}}
 					className="p-10 w-full h-3/4 border-4 border-black text-xl font-mono rounded-lg"
 				></textarea>
 			</div>

@@ -35,7 +35,6 @@ export default function Renderer({
 	useEffect(() => {
 		if (!isEqual(prevComponentsRef.current, components)) {
 			renderAllComponents();
-			console.log("Renderer: All components rerendered");
 			prevComponentsRef.current = components;
 		}
 	}, [components]);
@@ -55,6 +54,5 @@ export default function Renderer({
 
 function RenderedComponent({ id, name }: Component) {
 	const component = useRenderComponent(name, id);
-	console.log(`Renderer: Rendered component with id = ${id}`);
 	return component;
 }
