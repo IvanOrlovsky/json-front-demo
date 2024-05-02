@@ -2,13 +2,13 @@ import ErrorComponent from "../utils/ErrorComponent";
 import { importComponent } from "../utils/importComponent";
 import { useState, useEffect } from "react";
 
-export function useRenderComponent(componentName: string) {
+export function useRenderComponent(componentName: string, id: string) {
 	const [component, setComponent] = useState<any>();
 
 	useEffect(() => {
 		const getComponent = async () => {
 			try {
-				const result = await importComponent(componentName);
+				const result = await importComponent(componentName, id);
 				setComponent(result);
 			} catch (error: any) {
 				console.error(

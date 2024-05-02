@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import isEqual from "react-fast-compare";
 import { Component, JSONDescription } from "./types/JSONDescription";
 import { useRenderComponent } from "./hooks/useRenderComponent";
-import ComponentContextProvider from "./contexts/componentContext";
 
 export default function Renderer({
 	description,
@@ -36,7 +35,7 @@ export default function Renderer({
 	useEffect(() => {
 		if (!isEqual(prevComponentsRef.current, components)) {
 			renderAllComponents();
-			console.log("renderAllComponents from Renderer");
+			console.log("Renderer: All components rerendered");
 			prevComponentsRef.current = components;
 		}
 	}, [components]);
@@ -55,8 +54,7 @@ export default function Renderer({
 }
 
 function RenderedComponent({ id, name }: Component) {
-	const component = useRenderComponent(name);
-	return (
-		<ComponentContextProvider id={id}>{component}</ComponentContextProvider>
-	);
+	const component = useRenderComponent(name, id);
+	console.log(`Renderer: Rendered component with id = ${id}`);
+	return component;
 }

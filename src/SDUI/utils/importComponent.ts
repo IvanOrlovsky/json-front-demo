@@ -1,11 +1,14 @@
 import React from "react";
 
-export const importComponent = async (componentName: string) => {
+export const importComponent = async (componentName: string, id: string) => {
 	try {
 		const componentModule = await import(`@/components/${componentName}`);
-		// Проверяем, есть ли у модуля экспорт по умолчанию (React-компонент)
+
 		if (componentModule.default) {
-			return React.createElement(componentModule.default);
+			console.log(
+				typeof React.createElement(componentModule.default, { id: id })
+			);
+			return React.createElement(componentModule.default, { id: id });
 		} else {
 			throw new Error(
 				`Компонент "${componentName}" не экспортирует дефолтный экспорт.`

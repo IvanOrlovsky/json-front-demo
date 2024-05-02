@@ -46,6 +46,14 @@ export default function Home() {
 		console.log(data); // Выводим обновленные данные
 	}, [data]);
 
+	function parseJSON(jsonData: string) {
+		try {
+			return JSON.parse(jsonData);
+		} catch (error) {
+			return {};
+		}
+	}
+
 	return (
 		<main className="w-screen h-screen flex flex-col sm:flex-row gap-4 p-10 ">
 			<div className="h-1/2 sm:w-1/2 ">
