@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useDataObject } from "../contexts/dataObjectContext";
 
 export function useDataObjectUpdatetion(
@@ -13,16 +13,22 @@ export function useDataObjectUpdatetion(
 			[id]: value,
 		}));
 
-		const cleanup = () => {
+		return () => {
 			updateData((prev) => {
 				const cleanedData = { ...prev };
-
 				delete cleanedData[id];
-
 				return cleanedData;
 			});
 		};
-
-		return cleanup;
 	}, []);
+
+	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const newValue = e.target.value;
+		updateData((prev) => ({
+			...prev,
+			[id]: { make: newValue },
+		}));
+	};
+
+	return { handleOnChange };
 }
