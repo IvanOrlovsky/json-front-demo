@@ -18,6 +18,7 @@ export default function Make({ id }: { id: string }) {
 				onChange={(e) => {
 					handleOnChange({ make: e.target.value });
 				}}
+				value={data[id]?.make || ""}
 			/>
 
 			<label

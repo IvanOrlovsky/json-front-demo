@@ -1,9 +1,8 @@
-import { ChangeEvent, useEffect } from "react";
+import { useEffect } from "react";
 import { useDataObject } from "../contexts/dataObjectContext";
-
 export function useDataObjectUpdatetion(
 	id: string,
-	value: Record<string, any> | string
+	value: Record<string, any>
 ) {
 	const { data, updateData } = useDataObject();
 
@@ -12,7 +11,9 @@ export function useDataObjectUpdatetion(
 			...prev,
 			[id]: value,
 		}));
+	}, []);
 
+	useEffect(() => {
 		return () => {
 			updateData((prev) => {
 				const cleanedData = { ...prev };
@@ -22,7 +23,7 @@ export function useDataObjectUpdatetion(
 		};
 	}, []);
 
-	const handleOnChange = (newValue: Record<string, any> | string) => {
+	const handleOnChange = (newValue: Record<string, any>) => {
 		updateData((prev) => ({
 			...prev,
 			[id]: newValue,

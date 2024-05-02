@@ -41,7 +41,7 @@ export default function Renderer({
 
 	return (
 		<div>
-			{renderedComponents.map((component, index) => (
+			{renderedComponents.map((component) => (
 				<RenderedComponent
 					key={component.id}
 					name={component.name}
