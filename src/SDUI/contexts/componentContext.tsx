@@ -17,7 +17,7 @@ export default function ComponentContextProvider({
 }) {
 	const [info, updateInfo] = useState<ComponentInfo>({
 		id: id,
-		value: {},
+		value: "",
 	});
 	return (
 		<ComponentContext.Provider value={{ info, updateInfo }}>

@@ -3,7 +3,7 @@ import { useDataObject } from "../contexts/dataObjectContext";
 
 export function useDataObjectUpdatetion(
 	id: string,
-	value: Record<string, any>
+	value: Record<string, any> | string
 ) {
 	const { updateData } = useDataObject();
 

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import isEqual from "react-fast-compare";
 import { Component, JSONDescription } from "./types/JSONDescription";
 import { useRenderComponent } from "./hooks/useRenderComponent";
 import ComponentContextProvider from "./contexts/componentContext";
@@ -15,6 +16,8 @@ export default function Renderer({
 		Component[] | React.ReactNode
 	>([]);
 
+	const prevComponentsRef = useRef(components);
+
 	const renderAllComponents = async () => {
 		try {
 			const rendered = await Promise.all(
@@ -23,16 +26,18 @@ export default function Renderer({
 			setRenderedComponents(rendered);
 		} catch (err: any) {
 			console.error("Ошибка при загрузке компонентов:", err);
-			setRenderedComponents([
-				<div key="error">
-					<h1>{err.message}</h1>
-				</div>,
-			]);
 		}
 	};
 
 	useEffect(() => {
 		renderAllComponents();
+	}, []);
+
+	useEffect(() => {
+		if (!isEqual(prevComponentsRef.current, components)) {
+			renderAllComponents();
+			console.log("renderAllComponents from Renderer");
+		}
 	}, [components]);
 
 	return (
