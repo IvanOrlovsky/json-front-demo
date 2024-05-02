@@ -22,11 +22,10 @@ export function useDataObjectUpdatetion(
 		};
 	}, []);
 
-	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const newValue = e.target.value;
+	const handleOnChange = (newValue: Record<string, any> | string) => {
 		updateData((prev) => ({
 			...prev,
-			[id]: { make: newValue },
+			[id]: newValue,
 		}));
 	};
 

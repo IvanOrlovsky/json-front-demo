@@ -6,7 +6,13 @@ import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
 
 export default function Home() {
 	const [jsonData, setJsonData] = useState(
-		JSON.stringify({ components: [{ id: "1", name: "Make" }] })
+		JSON.stringify({
+			components: [
+				{ id: "make1", name: "Make" },
+				{ id: "model1", name: "Model" },
+				{ id: "gap1", name: "GAP" },
+			],
+		})
 	);
 	const [error, setError] = useState("");
 
