@@ -43,16 +43,16 @@ export default function Renderer({
 		<div>
 			{renderedComponents.map((component) => (
 				<RenderedComponent
-					key={component.id}
+					key={JSON.stringify(component.props)}
 					name={component.name}
-					id={component.id}
+					props={component.props}
 				/>
 			))}
 		</div>
 	);
 }
 
-function RenderedComponent({ id, name }: Component) {
-	const component = useRenderComponent(name, id);
+function RenderedComponent({ props, name }: Component) {
+	const component = useRenderComponent(name, props);
 	return component;
 }

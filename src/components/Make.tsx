@@ -4,8 +4,13 @@ import { useDataObjectUpdatetion } from "@/SDUI/hooks/useDataObjectUpdatetion";
 
 import { cn } from "@/lib/utils/cn";
 
-export default function Make({ id }: { id: string }) {
-	const { data, handleOnChange } = useDataObjectUpdatetion(id, { make: "" });
+export default function Make(props: Record<string, any>) {
+	const { id } = props;
+	const { register } = useDataObjectUpdatetion(
+		id,
+		{ make: "" },
+		props?.event
+	);
 
 	return (
 		<div className="relative grow">
@@ -15,10 +20,7 @@ export default function Make({ id }: { id: string }) {
 				type={"text"}
 				className={cn("floating-label-input peer")}
 				placeholder=" "
-				onChange={(e) => {
-					handleOnChange({ make: e.target.value });
-				}}
-				value={data[id]?.make || ""}
+				{...register}
 			/>
 
 			<label

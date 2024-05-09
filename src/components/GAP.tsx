@@ -1,7 +1,7 @@
 "use client";
 
 import { useDataObjectUpdatetion } from "@/SDUI/hooks/useDataObjectUpdatetion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { IoIosRadioButtonOff } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
@@ -9,15 +9,27 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 import { cn } from "@/lib/utils/cn";
 
-export default function GAP({ id }: { id: string }) {
+export default function GAP(props: Record<string, any>) {
+	const { id } = props;
+	const { register } = useDataObjectUpdatetion(
+		id,
+		{ GAP: "false" },
+		props?.event
+	);
 	const [checked, setChecked] = useState(false);
+	const inputRef = useRef<HTMLInputElement>(null);
 	const title = "Гарантия стоимости (GAP)";
 	const text =
 		"В случае угона или гибели авто сделаем выплату без учета его износа";
 
-	const { data, handleOnChange } = useDataObjectUpdatetion(id, {
-		GAP: "false",
-	});
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.value = String(checked);
+			(register as { onChange: (e: any) => void; value: any }).onChange({
+				target: { value: inputRef.current.value },
+			});
+		}
+	}, [checked]);
 
 	return (
 		<div
@@ -30,16 +42,16 @@ export default function GAP({ id }: { id: string }) {
 			)}
 			onClick={() => {
 				setChecked(!checked);
-				handleOnChange({ GAP: String(!checked) });
 			}}
 		>
-			<input type="hidden" id={id} />
+			<input id={id} ref={inputRef} className="hidden" {...register} />
 			<div>
 				{checked && <FaCheckCircle className="text-blue-500" />}
 				{!checked && <IoIosRadioButtonOff />}
 			</div>
 			<div className="self-stretch grow flex flex-col gap-1">
 				<h2>{title}</h2>
+
 				<p className="kasko-subtext">{text}</p>
 			</div>
 			<IoIosInformationCircleOutline className="text-[#8591A9] text-[50px] self-start" />

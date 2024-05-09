@@ -16,12 +16,12 @@ export default function Screen({
 			setHasDuplicate(false);
 			setIsEmpty(false);
 			components.forEach((component) => {
-				if (ids.has(component.id)) {
+				if (ids.has(component.props.id)) {
 					setHasDuplicate(true);
 				} else {
-					ids.add(component.id);
+					ids.add(component.props.id);
 				}
-				if (component.id === "") {
+				if (component.props.id === "") {
 					setIsEmpty(true);
 				}
 			});

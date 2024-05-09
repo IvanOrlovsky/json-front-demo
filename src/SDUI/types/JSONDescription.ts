@@ -1,6 +1,6 @@
 export type Component = {
+	props: Record<string, any>;
 	name: string;
-	id: string;
 };
 export interface JSONDescription {
 	components: Component[];
