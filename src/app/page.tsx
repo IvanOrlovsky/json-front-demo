@@ -9,9 +9,27 @@ export default function Home() {
 		JSON.stringify(
 			{
 				components: [
-					{ props: { id: "make1", event: "onChange" }, name: "Make" },
-					{ props: { id: "model1", event: "onBlur" }, name: "Model" },
-					{ props: { id: "gap1" }, name: "GAP" },
+					{
+						name: "FormBlock",
+						props: {
+							id: "autoForm",
+							title: "Автомобиль",
+						},
+						children: [
+							{
+								name: "Make",
+								props: { id: "make1", event: "onChange" },
+							},
+							{
+								name: "Model",
+								props: { id: "model1", event: "onBlur" },
+							},
+						],
+					},
+					{
+						name: "GAP",
+						props: { id: "gap1" },
+					},
 				],
 			},
 			null,

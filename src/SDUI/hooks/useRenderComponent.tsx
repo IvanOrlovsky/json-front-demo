@@ -1,34 +1,27 @@
-import ErrorComponent from "../utils/ErrorComponent";
-import { importComponent } from "../utils/importComponent";
 import { useState, useEffect } from "react";
+import { componentMap } from "../Map/ComponentMap";
 
-export function useRenderComponent(
-	componentName: string,
-	props: Record<string, any>
-) {
-	const [component, setComponent] = useState<any>();
+export function useRenderComponent(componentName: string): React.FC | null {
+	const [Component, setComponent] = useState<React.FC | null>(null);
 
 	useEffect(() => {
-		const getComponent = async () => {
-			try {
-				const result = await importComponent(componentName, props);
-				setComponent(result);
-			} catch (error: any) {
-				console.error(
-					`Ошибка при загрузке компонента "${componentName}":`,
-					error
-				);
-				setComponent(
-					<ErrorComponent
-						componentName={componentName}
-						errorMessage={error.message}
-					/>
+		try {
+			const Component = componentMap[componentName];
+			if (Component) {
+				setComponent(() => Component);
+			} else {
+				throw new Error(
+					`Компонент "${componentName}" не найден в словаре.`
 				);
 			}
-		};
-
-		getComponent();
+		} catch (error: any) {
+			console.error(
+				`Ошибка при загрузке компонента "${componentName}":`,
+				error
+			);
+			setComponent(null);
+		}
 	}, [componentName]);
 
-	return component;
+	return Component;
 }
