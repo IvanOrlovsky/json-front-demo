@@ -1,8 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ComponentType } from "react";
 import { componentMap } from "../Map/ComponentMap";
 
-export function useRenderComponent(componentName: string): React.FC | null {
-	const [Component, setComponent] = useState<React.FC | null>(null);
+interface RenderedComponentType {
+	children?: React.ReactNode[];
+}
+export function useRenderComponent(
+	componentName: string
+): React.FC<RenderedComponentType> | null {
+	const [Component, setComponent] =
+		useState<React.FC<RenderedComponentType> | null>(null);
 
 	useEffect(() => {
 		try {

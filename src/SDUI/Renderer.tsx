@@ -48,13 +48,7 @@ export default function Renderer({
 	);
 }
 
-interface RenderedComponentProps extends ComponentType {}
-
-const RenderedComponent: React.FC<RenderedComponentProps> = ({
-	props,
-	name,
-	children,
-}) => {
+function RenderedComponent({ props, name, children }: ComponentType) {
 	const Component = useRenderComponent(name);
 	if (!Component) {
 		return <div>Компонент {name} не найден</div>;
@@ -67,4 +61,4 @@ const RenderedComponent: React.FC<RenderedComponentProps> = ({
 				))}
 		</Component>
 	);
-};
+}
