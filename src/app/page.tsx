@@ -9,6 +9,7 @@ export default function Home() {
 		JSON.stringify(
 			{
 				components: [
+					{ name: "FIO", props: { id: "FIOForm" } },
 					{
 						name: "FormBlock",
 						props: {
