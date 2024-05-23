@@ -38,6 +38,12 @@ export default function Button(props: Record<string, any>) {
 					[id]: { state: "cliked" },
 				}))
 			}
+			onFocus={() =>
+				updateData((prev) => ({
+					...prev,
+					[id]: { state: "focused" },
+				}))
+			}
 			onBlur={() =>
 				updateData((prev) => ({
 					...prev,
