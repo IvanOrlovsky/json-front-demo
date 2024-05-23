@@ -14,9 +14,11 @@ const FormBlock: React.FC<FormBlockProps> = ({
 	...rest
 }) => {
 	return (
-		<div className={cn("rounded-lg bg-slate-400 flex flex-col p-2")}>
-			<h1 className="text-black font-semibold text-lg mb-2">{title}</h1>
-			<form id={id} name={id}>
+		<div className={cn(" rounded-3xl bg-white pt-5 px-4 pb-5")}>
+			<h1 className="w-fit mb-4 text-xl sm:text-2xl font-semibold text-[#1F232B] ">
+				{title}
+			</h1>
+			<form id={id} name={id} className="flex flex-col gap-3">
 				{children}
 			</form>
 		</div>

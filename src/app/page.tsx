@@ -9,27 +9,64 @@ export default function Home() {
 		JSON.stringify(
 			{
 				components: [
-					{ name: "FIO", props: { id: "FIOForm" } },
 					{
 						name: "FormBlock",
 						props: {
-							id: "autoForm",
-							title: "Автомобиль",
+							id: "risksForm",
+							title: "Страховые риски",
 						},
 						children: [
 							{
-								name: "Make",
-								props: { id: "make1", event: "onChange" },
+								name: "Crime",
+								props: { id: "crime" },
 							},
 							{
-								name: "Model",
-								props: { id: "model1", event: "onBlur" },
+								name: "GAP",
+								props: { id: "gap1" },
 							},
 						],
 					},
 					{
-						name: "GAP",
-						props: { id: "gap1" },
+						name: "FormBlock",
+						props: {
+							id: "serviceForm",
+							title: "Сервисные опции",
+						},
+						children: [
+							{
+								name: "Evacuation",
+								props: { id: "evacuation" },
+							},
+							{
+								name: "Commisar",
+								props: { id: "commisar" },
+							},
+							{
+								name: "TechHelp",
+								props: { id: "techHelp" },
+							},
+						],
+					},
+					{
+						name: "FormBlock",
+						props: {
+							id: "extraForm",
+							title: "Дополнительные опции",
+						},
+						children: [
+							{
+								name: "Accident",
+								props: { id: "Accident" },
+							},
+							{
+								name: "Button",
+								props: {
+									id: "Risks_next_btn",
+									text: "Продолжить",
+									type: "button",
+								},
+							},
+						],
 					},
 				],
 			},
@@ -90,7 +127,7 @@ export default function Home() {
 				<div className="mb-2 font-semibold	text-center text-sm sm:text-4xl font-mono">
 					Сгенерированный экран
 				</div>
-				<div className="p-10  border-4 border-black text-3xl font-mono rounded-lg overflow-scroll">
+				<div className="p-10  border-4 border-black text-3xl font-mono rounded-lg overflow-scroll  bg-[#F1F2F6] pb-20">
 					<Screen description={JSON.parse(jsonData)}></Screen>
 				</div>
 			</div>

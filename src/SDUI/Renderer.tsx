@@ -40,7 +40,7 @@ export default function Renderer({
 	}, [components]);
 
 	return (
-		<div>
+		<div className="flex flex-col gap-[16px]">
 			{renderedComponents.map((component, index) => (
 				<RenderedComponent key={index} {...component} />
 			))}
