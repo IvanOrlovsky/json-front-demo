@@ -9,6 +9,9 @@ import Evacuation from "@/components/Evacuation";
 import TechHelp from "@/components/TechHelp";
 import Button from "@/components/Button";
 import Accident from "@/components/Accident";
+import NavChips from "@/components/NavChips";
+import Title from "@/components/Title";
+import Header from "@/components/Header";
 
 export const componentMap: Record<string, React.FC<any>> = {
 	GAP,
@@ -22,4 +25,7 @@ export const componentMap: Record<string, React.FC<any>> = {
 	TechHelp,
 	Button,
 	Accident,
+	NavChips,
+	Title,
+	Header,
 };

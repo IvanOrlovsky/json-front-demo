@@ -9,6 +9,21 @@ export default function Home() {
 		JSON.stringify(
 			{
 				components: [
+					{ name: "Header", props: { id: "kasko_header" } },
+					{
+						name: "Title",
+						props: {
+							id: "process_title",
+							text: "Каско",
+						},
+					},
+					{
+						name: "NavChips",
+						props: {
+							id: "process_Navigation",
+							active: "3",
+						},
+					},
 					{
 						name: "FormBlock",
 						props: {
@@ -127,7 +142,7 @@ export default function Home() {
 				<div className="mb-2 font-semibold	text-center text-sm sm:text-4xl font-mono">
 					Сгенерированный экран
 				</div>
-				<div className="p-10  border-4 border-black text-3xl font-mono rounded-lg overflow-scroll  bg-[#F1F2F6] pb-20">
+				<div className="relative p-10  border-4 border-black text-3xl font-mono rounded-lg overflow-scroll  bg-[#F1F2F6] pb-20">
 					<Screen description={JSON.parse(jsonData)}></Screen>
 				</div>
 			</div>
