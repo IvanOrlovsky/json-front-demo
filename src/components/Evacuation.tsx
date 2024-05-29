@@ -24,14 +24,6 @@ const defaultProps: Partial<EvacuationProps> = {
 export default function Evacuation(props: EvacuationProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента Evacuation
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		Evacuation: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function Evacuation(props: EvacuationProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Evacuation
+			</h1>
+		);
+	}
 
 	return (
 		<div

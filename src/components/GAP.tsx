@@ -24,14 +24,6 @@ const defaultProps: Partial<GAPProps> = {
 export default function GAP(props: GAPProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента GAP
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		GAP: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function GAP(props: GAPProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента GAP
+			</h1>
+		);
+	}
 
 	return (
 		<div

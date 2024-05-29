@@ -24,14 +24,6 @@ const defaultProps: Partial<CrimeProps> = {
 export default function Crime(props: CrimeProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента Crime
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		Crime: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function Crime(props: CrimeProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Crime
+			</h1>
+		);
+	}
 
 	return (
 		<div

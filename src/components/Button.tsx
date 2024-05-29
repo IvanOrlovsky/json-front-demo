@@ -24,12 +24,6 @@ export default function Button(props: ButtonProps) {
 		...props,
 	};
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">Не указан id кнопки</h1>
-		);
-	}
-
 	const { updateData } = useDataObject();
 
 	useEffect(() => {
@@ -48,6 +42,12 @@ export default function Button(props: ButtonProps) {
 			});
 		};
 	}, []);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">Не указан id кнопки</h1>
+		);
+	}
 
 	return (
 		<button

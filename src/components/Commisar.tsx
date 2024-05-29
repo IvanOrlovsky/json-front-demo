@@ -24,14 +24,6 @@ const defaultProps: Partial<CommisarProps> = {
 export default function Commisar(props: CommisarProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента Commisar
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		Commisar: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function Commisar(props: CommisarProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Commisar
+			</h1>
+		);
+	}
 
 	return (
 		<div

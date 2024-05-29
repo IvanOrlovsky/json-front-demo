@@ -24,14 +24,6 @@ const defaultProps: Partial<AccidentProps> = {
 export default function Accident(props: AccidentProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента Accident
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		Accident: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function Accident(props: AccidentProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Accident
+			</h1>
+		);
+	}
 
 	return (
 		<div

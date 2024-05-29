@@ -24,14 +24,6 @@ const defaultProps: Partial<TechHelpProps> = {
 export default function TechHelp(props: TechHelpProps) {
 	const { id, checked, title, text } = { ...defaultProps, ...props };
 
-	if (!id) {
-		return (
-			<h1 className="text-red-600 bg-red-100 p-4">
-				Не указан id компонента TechHelp
-			</h1>
-		);
-	}
-
 	const { register } = useDataObjectUpdatetion(id, {
 		TechHelp: String(checked?.toLowerCase() === "true"),
 	});
@@ -48,6 +40,14 @@ export default function TechHelp(props: TechHelpProps) {
 			});
 		}
 	}, [checked_state]);
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента TechHelp
+			</h1>
+		);
+	}
 
 	return (
 		<div
