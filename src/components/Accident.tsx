@@ -9,45 +9,63 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 import { cn } from "@/lib/utils/cn";
 
-export default function Accident(props: Record<string, any>) {
-	const { id } = props;
-	const { register } = useDataObjectUpdatetion(
-		id,
-		{ Accident: "false" },
-		props?.event
+interface AccidentProps {
+	id: string;
+	checked?: string;
+	title?: string;
+	text?: string;
+}
+
+const defaultProps: Partial<AccidentProps> = {
+	title: "Несчастный случай",
+	text: "Выплата компенсации при несчастном случае в авто(травма, утопление, переохлаждение, острое отравление и т.д.)",
+};
+
+export default function Accident(props: AccidentProps) {
+	const { id, checked, title, text } = { ...defaultProps, ...props };
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Accident
+			</h1>
+		);
+	}
+
+	const { register } = useDataObjectUpdatetion(id, {
+		Accident: String(checked?.toLowerCase() === "true"),
+	});
+	const [checked_state, setChecked] = useState(
+		checked?.toLowerCase() === "true"
 	);
-	const [checked, setChecked] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const title = "Несчастный случай";
-	const text =
-		"Выплата компенсации при несчастном случае в авто(травма, утопление, переохлаждение, острое отравление и т.д.)";
 
 	useEffect(() => {
 		if (inputRef.current) {
-			inputRef.current.value = String(checked);
+			inputRef.current.value = String(checked_state);
 			(register as { onChange: (e: any) => void; value: any }).onChange({
 				target: { value: inputRef.current.value },
 			});
 		}
-	}, [checked]);
+	}, [checked_state]);
 
 	return (
 		<div
 			className={cn(
 				"flex flex-row gap-3 justify-start bg-white rounded-lg border-2 p-4 hover:cursor-pointer",
 				{
-					"border-[#03a9f4]": checked,
-					"border-[#DCE1EF]": !checked,
+					"border-[#03a9f4]": checked_state,
+					"border-[#DCE1EF]": !checked_state,
 				}
 			)}
 			onClick={() => {
-				setChecked(!checked);
+				setChecked(!checked_state);
 			}}
 		>
 			<input id={id} ref={inputRef} className="hidden" {...register} />
 			<div>
-				{checked && <FaCheckCircle className="text-blue-500" />}
-				{!checked && <IoIosRadioButtonOff />}
+				{checked_state && <FaCheckCircle className="text-blue-500" />}
+				{!checked_state && <IoIosRadioButtonOff />}
 			</div>
 			<div className="self-stretch grow flex flex-col gap-1">
 				<h2>{title}</h2>

@@ -1,9 +1,35 @@
+import React, { useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
 import { useDataObject } from "@/SDUI/contexts/dataObjectContext";
-import { useEffect } from "react";
 
-export default function Button(props: Record<string, any>) {
-	const { id, text, type } = props;
+// Интерфейс для свойств компонента Button
+interface ButtonProps {
+	id: string;
+	text: string;
+	type?: "button" | "submit" | "reset"; // Опциональное свойство с типом
+	forForm?: string;
+	className?: string;
+}
+
+// Значения по умолчанию для опциональных свойств
+const defaultProps: Partial<ButtonProps> = {
+	text: "Кнопка",
+	type: "button" as "button",
+};
+
+export default function Button(props: ButtonProps) {
+	// Использование значений по умолчанию
+	const { id, text, type, forForm, className } = {
+		...defaultProps,
+		...props,
+	};
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">Не указан id кнопки</h1>
+		);
+	}
+
 	const { updateData } = useDataObject();
 
 	useEffect(() => {
@@ -26,16 +52,16 @@ export default function Button(props: Record<string, any>) {
 	return (
 		<button
 			id={id}
-			form={props?.forForm}
+			form={forForm}
 			type={type}
 			className={cn(
-				" hover:bg-[#0e81bb] active:bg-[#0a5880] bg-[#1698D9] rounded-2xl py-[15px] text-white font-semibold text-lg w-full",
-				props?.className
+				"hover:bg-[#0e81bb] active:bg-[#0a5880] bg-[#1698D9] rounded-2xl py-[15px] text-white font-semibold text-lg w-full",
+				className
 			)}
 			onClick={() =>
 				updateData((prev) => ({
 					...prev,
-					[id]: { state: "cliked" },
+					[id]: { state: "clicked" },
 				}))
 			}
 			onFocus={() =>
@@ -53,7 +79,7 @@ export default function Button(props: Record<string, any>) {
 			onDoubleClick={() =>
 				updateData((prev) => ({
 					...prev,
-					[id]: { state: "double-cliked" },
+					[id]: { state: "double-clicked" },
 				}))
 			}
 		>

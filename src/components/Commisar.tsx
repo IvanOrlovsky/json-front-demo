@@ -9,45 +9,63 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 import { cn } from "@/lib/utils/cn";
 
-export default function Commisar(props: Record<string, any>) {
-	const { id } = props;
-	const { register } = useDataObjectUpdatetion(
-		id,
-		{ Commisar: "false" },
-		props?.event
+interface CommisarProps {
+	id: string;
+	checked?: string;
+	title?: string;
+	text?: string;
+}
+
+const defaultProps: Partial<CommisarProps> = {
+	title: "Аварийный коммисар",
+	text: "Наш специалист прибудет на место ДТП для оформления необходимых документов и оценки ущерба",
+};
+
+export default function Commisar(props: CommisarProps) {
+	const { id, checked, title, text } = { ...defaultProps, ...props };
+
+	if (!id) {
+		return (
+			<h1 className="text-red-600 bg-red-100 p-4">
+				Не указан id компонента Commisar
+			</h1>
+		);
+	}
+
+	const { register } = useDataObjectUpdatetion(id, {
+		Commisar: String(checked?.toLowerCase() === "true"),
+	});
+	const [checked_state, setChecked] = useState(
+		checked?.toLowerCase() === "true"
 	);
-	const [checked, setChecked] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const title = "Аварийный коммисар";
-	const text =
-		"Наш специалист прибудет на место ДТП для оформления необходимых документов и оценки ущерба";
 
 	useEffect(() => {
 		if (inputRef.current) {
-			inputRef.current.value = String(checked);
+			inputRef.current.value = String(checked_state);
 			(register as { onChange: (e: any) => void; value: any }).onChange({
 				target: { value: inputRef.current.value },
 			});
 		}
-	}, [checked]);
+	}, [checked_state]);
 
 	return (
 		<div
 			className={cn(
 				"flex flex-row gap-3 justify-start bg-white rounded-lg border-2 p-4 hover:cursor-pointer",
 				{
-					"border-[#03a9f4]": checked,
-					"border-[#DCE1EF]": !checked,
+					"border-[#03a9f4]": checked_state,
+					"border-[#DCE1EF]": !checked_state,
 				}
 			)}
 			onClick={() => {
-				setChecked(!checked);
+				setChecked(!checked_state);
 			}}
 		>
 			<input id={id} ref={inputRef} className="hidden" {...register} />
 			<div>
-				{checked && <FaCheckCircle className="text-blue-500" />}
-				{!checked && <IoIosRadioButtonOff />}
+				{checked_state && <FaCheckCircle className="text-blue-500" />}
+				{!checked_state && <IoIosRadioButtonOff />}
 			</div>
 			<div className="self-stretch grow flex flex-col gap-1">
 				<h2>{title}</h2>

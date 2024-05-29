@@ -33,7 +33,7 @@ export default function Home() {
 						children: [
 							{
 								name: "Crime",
-								props: { id: "crime" },
+								props: {},
 							},
 							{
 								name: "GAP",
@@ -54,7 +54,10 @@ export default function Home() {
 							},
 							{
 								name: "Commisar",
-								props: { id: "commisar" },
+								props: {
+									id: "commisar",
+									title: "Это заголовок для демо, его можно стереть из входного json",
+								},
 							},
 							{
 								name: "TechHelp",
@@ -71,12 +74,12 @@ export default function Home() {
 						children: [
 							{
 								name: "Accident",
-								props: { id: "Accident" },
+								props: { id: "accident", checked: "true" },
 							},
 							{
 								name: "Button",
 								props: {
-									id: "Risks_next_btn",
+									id: "risks_next_btn",
 									text: "Продолжить",
 									type: "button",
 								},
